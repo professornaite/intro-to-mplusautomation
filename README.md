@@ -27,6 +27,14 @@ How to reference this walkthrough: *This work was supported by the IMMERSE Proje
 Visit our [GitHub](https://github.com/immerse-ucsb) account to download the materials needed for this walkthrough.
 
 ------------------------------------------------------------------------
+
+# Introduction to `MplusAutomation`
+
+This walkthrough is presented by the IMMERSE team and will go through how to use Mplus and MplusAutomation in R.
+For Part 1, we will first walk through how to run basic descriptive statistics using only Mplus.
+In Part 2, we will use an R package called MplusAutomation to run the same analysis as Part 1, only this time using only RStudio.
+Part 3 will go over data cleaning in R.
+
 ------------------------------------------------------------------------
 
 ## PART 1: Introduction to Mplus
