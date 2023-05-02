@@ -12,11 +12,11 @@
 
 - - -
 
-![](figures/immerse_hex.png){width="200"}
+![](figures/immerse_hex_small.png)
 
 The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support education scholars in integrating mixture modeling into their research.
 
-![](figures/IESNewLogo.jpg){style="float: left;" width="300"}
+![](figures/IESNewLogo.jpg)
 
 -   Please [visit our website](https://immerse.education.ucsb.edu/) to learn more and apply for the year-long fellowship.
 
