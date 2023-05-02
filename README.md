@@ -12,7 +12,7 @@
 
 - - -
 
-<img src="figures/immerse_hex_small.png" width="200" />
+<img src="figures/immerse_hex_small.png" width="300" />
 
 The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support education scholars in integrating mixture modeling into their research.
 
