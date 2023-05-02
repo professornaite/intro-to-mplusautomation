@@ -3,15 +3,17 @@ title: "Introduction to MplusAutomation"
 author: "IMMERSE Training Team"
 date: "Updated: `r format(Sys.time(), '%B %d, %Y')`"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
     toc_float: yes
     theme: flatly
-  pdf_document:
-    toc: yes
 editor_options:
   markdown:
     wrap: sentence
+header-includes:
+- \usepackage{wrapfig} 
 ---
 
 ```{r, echo=FALSE}
@@ -31,28 +33,39 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ------------------------------------------------------------------------
 
-# IMMERSE Project
+```{r, echo=FALSE, out.width='35%', fig.align='center'}
+knitr::include_graphics("figures/immerse_hex.png")
+```
 
-![](figures/IESNewLogo.jpg){style="float: left;" width="300"}
+------------------------------------------------------------------------
 
-The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support Education scholars in integrating mixture modeling into their research.
+\begin{wrapfigure}{r}{.4\textwidth}
+  \centering
+    \includegraphics[width=\linewidth]{figures/IESNewLogo.jpg}
+\end{wrapfigure}
 
--   Please [visit our website](https://immerse.education.ucsb.edu/) to learn more and apply for the year-long fellowship.
 
--   Follow us on [Twitter](https://twitter.com/IMMERSE_UCSB)!
+The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support education scholars in integrating mixture modeling into their research.
 
-How to reference this walkthrough: *This work was supported by the IMMERSE Project* (IES - 305B220021)
+-   Please <span style="text-decoration:underline">[visit our website]</span>(https://immerse.education.ucsb.edu/) to learn more and apply for the year-long fellowship.
 
-Visit our [GitHub](https://github.com/immerse-ucsb) account to download the materials needed for this walkthrough.
+-   Visit our <span style="text-decoration:underline">[GitHub](https://github.com/immerse-ucsb)</span> account to download the materials needed for this walkthrough.
+
+-   Follow us on <span style="text-decoration:underline">[Twitter](https://twitter.com/IMMERSE_UCSB)</span>!
+
+
+How to reference this: *This work was supported by the IMMERSE Project* (IES - 305B220021). 
 
 ------------------------------------------------------------------------
 
 # Introduction to `MplusAutomation`
 
-This walkthrough is presented by the IMMERSE team and will go through how to use Mplus and MplusAutomation in R.
+This introduction will go through how to use Mplus and MplusAutomation in R.
 For Part 1, we will first walk through how to run basic descriptive statistics using only Mplus.
 In Part 2, we will use an R package called MplusAutomation to run the same analysis as Part 1, only this time using only RStudio.
 Part 3 will go over data cleaning in R.
+
+Additional MplusAutomation resources can be found <span style="text-decoration:underline">[here](https://immerse.education.ucsb.edu/)</span> 
 
 ------------------------------------------------------------------------
 
@@ -111,11 +124,9 @@ MPplus will save this *.out* file in the folder that dataset is located (in our 
 
 ## PART 2: Introduction to RStudio
 
-Now, we will be obtaining the same *.out* file that we produced above using RStudio (and never having to open Mplus!).
-This is done using the [`MplusAutomation`](https://michaelhallquist.github.io/MplusAutomation/) package (Hallquist & WIley, 2018).
-This R package communicates with Mplus to replicate the process we went through above using Rstudio and R language.
-While this course expects you to have some R knowledge, I will go through some basics here.
-Please see "R-Studio Basics" on GauchoSpace under R Resources for R tips.
+In Part II, we will obtain the same Mplus *.out* file that we produced in Part I using RStudio.
+This is done using the [`MplusAutomation`](https://michaelhallquist.github.io/MplusAutomation/) package (Hallquist & Wiley, 2018).
+`MplusAutomation` is an R package communicates with Mplus to replicate the process we went through above using Rstudio and R language.
 
 ### WHAT is `MplusAutomation` & WHY should we use it?
 
@@ -129,13 +140,14 @@ Please see "R-Studio Basics" on GauchoSpace under R Resources for R tips.
 
 **WHY?**
 
--   As a data analyst using Mplus to analyze projects that often span multiple years I realized a need for clearly organized work procedures in which every research decision can be documented in a single place.
--   The motivation for using this method is to increase reproducibility, organization, efficiency, and transparency
+-   `MplusAutomation` can provide clearly organized work procedures in which every research decision can be documented in a single place
+-   Increase reproducibility, organization, efficiency, and transparency
 
 **HOW?**
 
--   We will interface entirely within R-Studio.
--   The code presented will be very repetitive by design. Creating a consistent routine is key!
+-   The interface for MplusAutomation is entirely within R-Studio. You do not need to open Mplus
+-   The code presented will be very repetitive by design
+
 
 ### Step 1: Open RStudio
 
@@ -158,8 +170,8 @@ Click "New Directory" --\> New Project --\> Name your project (Perhaps "Intro to
 
 Before you click "Create Project," save your project.
 It'll save as a folder.
-**THIS IS IMPORTANT.** If your file path is too long (longer than 90 characters), then Mplus cuts off the filepath and will not run your syntax.
-Move all your Lab 1 Materials into this new project folder you have created.
+**THIS IS IMPORTANT.** If your file path is too long (longer than 90 characters), Mplus cuts off the filepath and will not run your syntax.
+Move all the materials found on Github into this new project folder you created.
 
 ### Step 3: Create an R-markdown document
 
@@ -329,8 +341,7 @@ It's good practice to make it a habit to check your output file after every run.
 
 ## PART 3: Data Cleaning & Screening
 
-It's important to explore your variables before running a factor analysis.
-First, lets rename our variables to something more meaningful using `rename()`.
+It's important to explore your data before running your analyses. First, lets rename our variables to something more meaningful using `rename()`.
 As a reminder, use the pipe operator `%>%` to create a sequence of functions, you can use the shortcut crt + shift + m:
 
 ```{r}
@@ -426,8 +437,8 @@ school_factor %>%
 
 ### Normality and Distributions
 
-It's important to inspect our data to see if it is normally distributed.
-Many analyses are sensitive to violations of normality so in order to make sure we are confident that our data are normal, there are several things we can look at: density plots, histograms, QQ plots, box plots, scatterplots, and the descriptives such as skewness and kurtosis.
+It's important to inspect the distribution of the data.
+Many analyses are sensitive to violations of normality so in order to make sure you are confident that our data are normal, there are several things we can look at: density plots, histograms, QQ plots, box plots, scatterplots, and the descriptives such as skewness and kurtosis.
 Normally, we would want to inspect every variable, but for demonstration purposes, lets focus on the `school_belif1` variable.
 
 #### Density Plots
