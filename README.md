@@ -12,28 +12,31 @@
 
 - - -
 
-# IMMERSE Project
+![](figures/immerse_hex.png){width="200"}
 
-![](figures/IESNewLogo.jpg)
+The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support education scholars in integrating mixture modeling into their research.
 
-The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support Education scholars in integrating mixture modeling into their research.
+![](figures/IESNewLogo.jpg){style="float: left;" width="300"}
 
 -   Please [visit our website](https://immerse.education.ucsb.edu/) to learn more and apply for the year-long fellowship.
 
+-   Visit our [GitHub](https://github.com/immerse-ucsb) account to download the materials needed for this walkthrough.
+
 -   Follow us on [Twitter](https://twitter.com/IMMERSE_UCSB)!
 
-How to reference this walkthrough: *This work was supported by the IMMERSE Project* (IES - 305B220021)
 
-Visit our [GitHub](https://github.com/immerse-ucsb) account to download the materials needed for this walkthrough.
+How to reference this: *This work was supported by the IMMERSE Project* (IES - 305B220021).
 
 ------------------------------------------------------------------------
 
 # Introduction to `MplusAutomation`
 
-This walkthrough is presented by the IMMERSE team and will go through how to use Mplus and MplusAutomation in R.
+This introduction will go through how to use Mplus and MplusAutomation in R.
 For Part 1, we will first walk through how to run basic descriptive statistics using only Mplus.
 In Part 2, we will use an R package called MplusAutomation to run the same analysis as Part 1, only this time using only RStudio.
 Part 3 will go over data cleaning in R.
+
+Additional MplusAutomation resources can be found <span style="text-decoration:underline">[here](https://immerse.education.ucsb.edu/)</span> 
 
 ------------------------------------------------------------------------
 
@@ -41,7 +44,7 @@ Part 3 will go over data cleaning in R.
 
 ------------------------------------------------------------------------
 
-### Step 1: Open Mplus 
+### Step 1: Open Mplus
 
 ![](figures/mplus.jpg)
 
@@ -50,12 +53,12 @@ Even though we will NOT be working directly in Mplus, it is good to get an idea 
 
 ------------------------------------------------------------------------
 
-### Step 2: Open Mplus input file located in the project folder 
+### Step 2: Open Mplus input file located in the project folder
 
 ![](figures/input.jpg)
 
-
-Open the file titled `basic_example.inp` located in the `part1_mplus` folder in Mplus. All syntax or input files for Mplus are a *.inp* file.
+Open the file titled `basic_example.inp` located in the `part1_mplus` folder in Mplus.
+All syntax or input files for Mplus are a *.inp* file.
 You may also create a new *.inp* file directly in Mplus and populate the syntax there.
 For now, we can use one that is already complete.
 
@@ -85,18 +88,16 @@ The dataset must also be formatted in certain way in order for Mplus to read it 
 
 ![](figures/run.jpg)
 
-This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables. MPplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`.
-All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
+This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables.
+MPplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`. All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
 
 ------------------------------------------------------------------------
 
 ## PART 2: Introduction to RStudio
 
-Now, we will be obtaining the same *.out* file that we produced above using RStudio (and never having to open Mplus!).
-This is done using the [`MplusAutomation`](https://michaelhallquist.github.io/MplusAutomation/) package (Hallquist & WIley, 2018).
-This R package communicates with Mplus to replicate the process we went through above using Rstudio and R language.
-While this course expects you to have some R knowledge, I will go through some basics here.
-Please see "R-Studio Basics" on GauchoSpace under R Resources for R tips.
+In Part II, we will obtain the same Mplus *.out* file that we produced in Part I using RStudio.
+This is done using the [`MplusAutomation`](https://michaelhallquist.github.io/MplusAutomation/) package (Hallquist & Wiley, 2018).
+`MplusAutomation` is an R package communicates with Mplus to replicate the process we went through above using Rstudio and R language.
 
 ### WHAT is `MplusAutomation` & WHY should we use it?
 
@@ -110,15 +111,16 @@ Please see "R-Studio Basics" on GauchoSpace under R Resources for R tips.
 
 **WHY?**
 
--   As a data analyst using Mplus to analyze projects that often span multiple years I realized a need for clearly organized work procedures in which every research decision can be documented in a single place.
--   The motivation for using this method is to increase reproducibility, organization, efficiency, and transparency
+-   `MplusAutomation` can provide clearly organized work procedures in which every research decision can be documented in a single place
+-   Increase reproducibility, organization, efficiency, and transparency
 
 **HOW?**
 
--   We will interface entirely within R-Studio.
--   The code presented will be very repetitive by design. Creating a consistent routine is key!
+-   The interface for MplusAutomation is entirely within R-Studio. You do not need to open Mplus
+-   The code presented will be very repetitive by design
 
-### Step 1: Open RStudio 
+
+### Step 1: Open RStudio
 
 ![](figures/rstudio.jpg)
 
@@ -137,9 +139,10 @@ To create a new R project:
 
 Click "New Directory" --\> New Project --\> Name your project (Perhaps "Intro to MplusAutomation")
 
-Before you click "Create Project," save your project. It'll save as a folder. 
-**THIS IS IMPORTANT.** If your file path is too long (longer than 90 characters), then Mplus cuts off the filepath and will not run your syntax.
-Move all your Lab 1 Materials into this new project folder you have created.
+Before you click "Create Project," save your project.
+It'll save as a folder.
+**THIS IS IMPORTANT.** If your file path is too long (longer than 90 characters), Mplus cuts off the filepath and will not run your syntax.
+Move all the materials found on Github into this new project folder you created.
 
 ### Step 3: Create an R-markdown document
 
@@ -152,7 +155,6 @@ Lets create an R-markdown and write script to run a "type=basic" analysis using 
 To create an R-markdown:
 
 -   File --\> New File --\> R Markdown...
-
 
 In the window that pops up, give the R-markdown a title such as "**Introduction to MplusAutomation**" Click "OK." You should see a new markdown with some example text and code chunks.
 We want a clean document to start off with so delete everything from line 10 down.
@@ -176,7 +178,8 @@ here::i_am("intro-to-mplusautomation.Rmd")
 ```
 
 As a reminder, if a function does not work and you receive an error like this: `could not find function "random_function"`; or if you try to load a package and you receive an error like this: `` there is no package called `random_package` `` , then you will need to install the package using `install.packages("random_package")` in the console (the bottom-left window in R studio).
-Once you have installed the package you will *never* need to install it again, however you must *always* load in the packages at the beginning of your R markdown using `library(random_package)`, as shown in this document. Once it is installed, it doesn't need to be installed again.
+Once you have installed the package you will *never* need to install it again, however you must *always* load in the packages at the beginning of your R markdown using `library(random_package)`, as shown in this document.
+Once it is installed, it doesn't need to be installed again.
 
 ### Step 5: Read in data set
 
@@ -300,14 +303,16 @@ fem_basic_fit <- mplusModeler(fem_basic,
 
 ```
 
-After running an `MplusObject` function, MplusAutomation will generate an output file (same one we did before). ALWAYS check your output before moving forward with your analyses. It's easy to skip past checking our output since MplusAutomation doesn't automatically present it to us after running the code. It's good practice to make it a habit to check your output file after every run. 
+After running an `MplusObject` function, MplusAutomation will generate an output file (same one we did before).
+ALWAYS check your output before moving forward with your analyses.
+It's easy to skip past checking our output since MplusAutomation doesn't automatically present it to us after running the code.
+It's good practice to make it a habit to check your output file after every run.
 
 ------------------------------------------------------------------------
 
 ## PART 3: Data Cleaning & Screening
 
-It's important to explore your variables before running a factor analysis.
-First, lets rename our variables to something more meaningful using `rename()`.
+It's important to explore your data before running your analyses. First, lets rename our variables to something more meaningful using `rename()`.
 As a reminder, use the pipe operator `%>%` to create a sequence of functions, you can use the shortcut crt + shift + m:
 
 ```{r}
@@ -403,8 +408,8 @@ school_factor %>%
 
 ### Normality and Distributions
 
-It's important to inspect our data to see if it is normally distributed.
-Many analyses are sensitive to violations of normality so in order to make sure we are confident that our data are normal, there are several things we can look at: density plots, histograms, QQ plots, box plots, scatterplots, and the descriptives such as skewness and kurtosis.
+It's important to inspect the distribution of the data.
+Many analyses are sensitive to violations of normality so in order to make sure you are confident that our data are normal, there are several things we can look at: density plots, histograms, QQ plots, box plots, scatterplots, and the descriptives such as skewness and kurtosis.
 Normally, we would want to inspect every variable, but for demonstration purposes, lets focus on the `school_belif1` variable.
 
 #### Density Plots
