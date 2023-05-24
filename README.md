@@ -80,16 +80,17 @@ For now, we can use one that is already complete.
 
         -   **TYPE =** this section is what will change constantly based on your model. For now, we are running "type = basic" which will provide us descriptive statistics of our variables.
 
-**NOTE:** Please view the data file that is provided in this lab (basic_example.dat).
+**NOTE:** Please view the data file that is provided in this walkthrough (basic_example.dat).
 Mplus works with .dat files to run analyses.
-The dataset must also be formatted in certain way in order for Mplus to read it (i.e., no variable names)
+The dataset must also be formatted in certain way in order for Mplus to read it (i.e., no variable names).
+For more information on Mplus commands, see [here](https://stats.oarc.ucla.edu/mplus/seminars/mplus-class-notes/getting-started-with-mplus/).
 
 ### Step 3: Click Run
 
 ![](figures/run.jpg)
 
-This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables.
-MPplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`. All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
+This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables. For information on the `type=basic` output, see [here](https://stats.oarc.ucla.edu/mplus/seminars/mplus-class-notes/exploring/).
+Mplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`. All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
 
 ------------------------------------------------------------------------
 
@@ -137,7 +138,7 @@ To create a new R project:
 
 -   File --\> New Project...
 
-Click "New Directory" --\> New Project --\> Name your project (Perhaps "Intro to MplusAutomation")
+Click "New Directory" --\> New Project --\> Name your project (Perhaps "pretraining-day2")
 
 Before you click "Create Project," save your project.
 It'll save as a folder.
@@ -188,7 +189,7 @@ Remember that this is a data set specifically designed for Mplus.
 Let grab the original one (an SPSS file) in the `data` folder within the `part2_rstudio` folder.
 
 ```{r}
-data <- read_sav(here("part2_rstudio", "data", "explore_lab_data.sav"))
+data <- read_sav(here("part2_rstudio", "data", "explore_data.sav"))
 
 # Ways to view data in R:
 # 1. click on the data in your Global Environment (upper right pane) or use...
@@ -218,11 +219,11 @@ Here is how to convert the ***.sav*** **to *.csv***:
 
 ```{r}
 # write_csv saves a .csv version of your dataset to your working directory.
-# Enter the name of the object that contains your data set (in this case, "exp_lab1_data.csv"), then enter the name you want to save your dataset as. We can call it the same thing: "screen1.csv"
-write_csv(data, here("part2_rstudio", "data", "exp_lab1_data.csv"))
+# Enter the name of the object that contains your data set (in this case, "exp_data.csv"), then enter the name you want to save your dataset as. We can call it the same thing: "screen1.csv"
+write_csv(data, here("part2_rstudio", "data", "exp_data.csv"))
 
 # read the unlabeled data back into R
-data_csv <- read_csv(here("part2_rstudio", "data", "exp_lab1_data.csv"))
+data_csv <- read_csv(here("part2_rstudio", "data", "exp_data.csv"))
 ```
 
 **Optional: Convert from *.csv* to Mplus *.dat* file**
@@ -231,7 +232,7 @@ Say you want an Mplus .dat file and don't want to go through the hassle of delet
 You can use the `prepareMplusData()` function to convert from *.csv* to *.dat*.
 
 ```{r}
-prepareMplusData(data_csv, here("part2_rstudio", "data", "exp_lab1_data.dat"))
+prepareMplusData(data_csv, here("part2_rstudio", "data", "exp_data.dat"))
 ```
 
 ### Step 6: Using `MplusAutomation`

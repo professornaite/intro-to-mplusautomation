@@ -3,12 +3,12 @@ title: "Introduction to MplusAutomation"
 author: "IMMERSE Training Team"
 date: "Updated: `r format(Sys.time(), '%B %d, %Y')`"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     toc_float: yes
     theme: flatly
+  pdf_document:
+    toc: yes
 editor_options:
   markdown:
     wrap: sentence
@@ -32,6 +32,7 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 ------------------------------------------------------------------------
+
 
 ```{r, echo=FALSE, out.width='35%', fig.align='center'}
 knitr::include_graphics("figures/immerse_hex.png")
@@ -110,14 +111,15 @@ For now, we can use one that is already complete.
 
 **NOTE:** Please view the data file that is provided in this walkthrough (basic_example.dat).
 Mplus works with .dat files to run analyses.
-The dataset must also be formatted in certain way in order for Mplus to read it (i.e., no variable names)
+The dataset must also be formatted in certain way in order for Mplus to read it (i.e., no variable names).
+For more information on Mplus commands, see [here](https://stats.oarc.ucla.edu/mplus/seminars/mplus-class-notes/getting-started-with-mplus/).
 
 ### Step 3: Click Run
 
 ![](figures/run.jpg)
 
-This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables.
-MPplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`. All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
+This will run our "type=basic" analysis which will provide us a *.out* file that contains variables descriptive statistics of our variables. For information on the `type=basic` output, see [here](https://stats.oarc.ucla.edu/mplus/seminars/mplus-class-notes/exploring/).
+Mplus will save this *.out* file in the folder that dataset is located (in our case `part1_mplus`. All *.out* and *.inp* files can be open as a text file if you want to access them off without Mplus.
 
 ------------------------------------------------------------------------
 
