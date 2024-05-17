@@ -3,12 +3,12 @@ title: "Introduction to MplusAutomation"
 author: "IMMERSE Training Team"
 date: "Updated: `r format(Sys.time(), '%B %d, %Y')`"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
     toc_float: yes
     theme: flatly
-  pdf_document:
-    toc: yes
 editor_options:
   markdown:
     wrap: sentence
@@ -33,28 +33,20 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ------------------------------------------------------------------------
 
-
-```{r, echo=FALSE, out.width='35%', fig.align='center'}
-knitr::include_graphics("figures/immerse_hex.png")
-```
-
-------------------------------------------------------------------------
-
-\begin{wrapfigure}{r}{.4\textwidth}
-  \centering
-    \includegraphics[width=\linewidth]{figures/IESNewLogo.jpg}
-\end{wrapfigure}
+![](figures/IESNewLogo.jpg){style="float: left;" width="300"}
 
 The Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (IMMERSE) is an IES funded training grant (R305B220021) to support education scholars in integrating mixture modeling into their research.
 
--   Please [visit our website](https://immerse.education.ucsb.edu/) to learn more and apply for the year-long fellowship.
+-   Please [visit our website](https://immerse.education.ucsb.edu/) to learn more.
 
--   Visit our [GitHub](https://github.com/immerse-ucsb) account to download the materials needed for this walkthrough.
+-   Visit our [GitHub](https://github.com/immerse-ucsb) account to access all the IMMERSE materials.
 
 -   Follow us on [Twitter](https://twitter.com/IMMERSE_UCSB)!
 
-
-How to reference this: *This work was supported by the IMMERSE Project* (IES - 305B220021). 
+How to reference this workshop: Institute of Mixture Modeling for Equity-Oriented Researchers, Scholars, and Educators (2023).
+IMMERSE Online Resources (IES No. 305B220021).
+Institute of Education Sciences.
+<https://immerse-ucsb.github.io/pre-training>
 
 ------------------------------------------------------------------------
 
@@ -238,7 +230,7 @@ You can also look at the dataframe with labels and response scale meta-data:
 sjPlot::view_df(data)
 ```
 
-This SPSS dataset gives us more information than the *.dat* one.
+This SPSS dataset gives us more information than the *.dat* one.
 We are able to see the variable names, and descriptions.
 
 **Convert from *.sav* to *.csv***
@@ -270,16 +262,14 @@ To run a basic model using `MplusAutomation` we used the `mplusObject()` functio
 
 **What does the** `mplusObject()` **function do?**
 
-1\.
-It generates an Mplus input file (does not need full variable name list, its automated for you!) 2.
-It generates a datafile specific to each model 3.
-It runs or estimates the model (hopefully) producing the correct output.
-Always check!
+1. It generates an Mplus input file (does not need full variable name list, its automated for you!) 
+2. It generates a datafile specific to each model 
+3. It runs or estimates the model (hopefully) producing the correct output. Always check!
 
 **What does the** `mplusModeler()` **function do?**
 
 1.  Creates, runs, and reads Mplus models created using `mplusObject()`
-2.  You can specify where you want the *.out* file saved
+2.  You can specify where you want the *.out* file saved
 3.  `check=TRUE` checks for missing semicolons, `run=TRUE` runs the model, `hashfilename=FALSE` does not add a hash of the raw data to the datafile name.
 
 ```{r, echo=TRUE, eval=FALSE}
@@ -337,6 +327,28 @@ After running an `MplusObject` function, MplusAutomation will generate an output
 ALWAYS check your output before moving forward with your analyses.
 It's easy to skip past checking our output since MplusAutomation doesn't automatically present it to us after running the code.
 It's good practice to make it a habit to check your output file after every run.
+
+**What can we do with Mplus output in R?**
+
+What makes `MplusAutomation` powerful is its ability to read output and create tables and figures. Let's look at the `basic.out` example. First, read in the output using the `readModels` function:
+
+```{r}
+out <- readModels(here("part2_rstudio", "basic.out"))
+out
+```
+
+When looking at the `out` object on its own, we see the fit statistics and parameters of the model. What if we want to look at the all the summary statistics?
+
+```{r}
+out$sampstat
+```
+
+Specifically, lets look at the correlation table:
+
+```{r}
+out$sampstat$correlations
+```
+
 
 ------------------------------------------------------------------------
 
