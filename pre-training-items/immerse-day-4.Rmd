@@ -1,0 +1,36 @@
+---
+title: "IMMERSE Pre-training Day 4"
+author: "Nathan Alexander"
+date: "2024-05-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages
+
+```{r}
+library(MplusAutomation)
+library(tidyverse)
+library(here)
+library(haven) # to load the spss data file
+```
+
+Import data
+
+```{r}
+data <- read_sav(here("part2_rstudio", "data", "explore_data.sav"))
+View(data)
+```
+
+Summarize data
+
+```{r}
+summary(data)
+sjPlot::view_df(data)
+```
+
+
+
