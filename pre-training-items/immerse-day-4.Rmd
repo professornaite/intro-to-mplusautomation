@@ -32,5 +32,12 @@ summary(data)
 sjPlot::view_df(data)
 ```
 
+Convert from .sav to .csv
+
+```{r}
+write_csv(data, here("part2_rstudio", "data", "exp_data.csv"))
+```
+
+
 
 
